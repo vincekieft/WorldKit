@@ -49,6 +49,11 @@ Using the WorldKit api is very simple. You create a builder, add the layers you 
 Here is an example of generating a heightmap and applying it to a unity terrain.
 We start by creating the builder itself:
 ```c#
+using UnityEngine;
+using WorldKit.src.procedural.Builders;
+using WorldKit.src.procedural.Layers;
+using WorldKit.src.procedural.Utils;
+
 public ComputeShader shader; // WorldKit compute shader
 public Terrain terrain; // Just a unity terrain
 
@@ -105,6 +110,11 @@ Our final terrain will now look like this:
 
 Resulting code:
 ```c#
+using UnityEngine;
+using WorldKit.src.procedural.Builders;
+using WorldKit.src.procedural.Layers;
+using WorldKit.src.procedural.Utils;
+
 public ComputeShader shader; // WorldKit compute shader
 public Terrain terrain; // Just a unity terrain
 
