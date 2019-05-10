@@ -1,14 +1,17 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using WorldKit.Procedural.Layers;
+using WorldKit.src.procedural.Layers.Base;
 
-namespace WorldKit.Procedural.Builders
+namespace WorldKit.src.procedural.Builders
 {
     public abstract class ABuilder
     {
         private Dictionary<string, int> _kernelIds = new Dictionary<string, int>();
         
+        /// <summary>
+        /// Abstract builder base class
+        /// </summary>
+        /// <param name="shader">The compute shader that has all the layer kernels</param>
         protected ABuilder(ComputeShader shader)
         {
             Shader = shader;
@@ -80,7 +83,16 @@ namespace WorldKit.Procedural.Builders
         public ComputeShader Shader { get; }
         
         protected abstract void InitializeKernel(int kernel);
+        
+        /// <summary>
+        /// Releases the buffers created by the builder from memory
+        /// </summary>
         public abstract void Release();
+        
+        /// <summary>
+        /// The default thread group arrangement used by this builder
+        /// </summary>
+        /// <returns></returns>
         public abstract Vector3 DefaultThreadGroups();
     }
 }

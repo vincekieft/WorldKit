@@ -23,6 +23,6 @@ void Terrace (uint3 id : SV_DispatchThreadID)
         float ceil = float(heightFloor + 1) / TerraceCount;
         
         // Update buffer
-        HeightBuffer[id.x] = lerp(HeightBuffer[id.x], lerp(floor, ceil, difference), BlendStrength);
+        HeightBuffer[id.x] = lerp(floor, ceil, difference);
     }
 }

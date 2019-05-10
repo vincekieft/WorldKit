@@ -14,5 +14,6 @@ void HeightMapToTexture (uint3 id : SV_DispatchThreadID)
     float3 gradient = CalculateGradientAndHeight(heightMapPos, HeightMapResolution, HeightBuffer); 
     
     // Set height
+    
     Texture[id.xy] = float4(gradient.z,gradient.z,gradient.z,1);
 }

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using WorldKit.Procedural.Layers;
+﻿using UnityEngine;
+using WorldKit.Procedural;
 using WorldKit.Procedural.Utils;
+using WorldKit.src.procedural.Utils;
 
-namespace WorldKit.Procedural.Builders
+namespace WorldKit.src.procedural.Builders
 {
     public class TextureBuilder : ABuilder
     {

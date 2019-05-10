@@ -1,10 +1,9 @@
 ﻿// Each #kernel tells which function to compile; you can have many kernels
 #pragma kernel PerlinNoise
 #pragma kernel Clamp
-#pragma kernel Erosion
+#pragma kernel HydraulicErosion
 #pragma kernel PseudoRandomNoise
 #pragma kernel HeightMapToTexture
-#pragma kernel HeightMapToVertices
 #pragma kernel Expand
 #pragma kernel HeightContrast
 #pragma kernel Terrace
@@ -21,16 +20,16 @@ uint HeightMapLength;
 RWStructuredBuffer<float> HeightBuffer;
 
 // Global includes
-#include "PRNG.hlsl"
-#include "WorldKitUtils.hlsl"
+#include "Utils/PRNG.hlsl"
+#include "Utils/WorldKitUtils.hlsl"
+#include "Utils/ClassicNoise2D.hlsl"
 
 // Kernel includes
-#include "PerlinNoise.hlsl"
-#include "Clamp.hlsl"
-#include "Erosion.hlsl"
-#include "PseudoRandomNoise.hlsl"
-#include "HeightMapToTexture.hlsl"
-#include "HeightMapToVertices.hlsl"
-#include "Expand.hlsl"
-#include "HeightContrast.hlsl"
-#include "Terrace.hlsl"
+#include "Layers/PerlinNoise.hlsl"
+#include "Layers/Clamp.hlsl"
+#include "Layers/HydraulicErosion.hlsl"
+#include "Layers/PseudoRandomNoise.hlsl"
+#include "Layers/HeightMapToTexture.hlsl"
+#include "Layers/Expand.hlsl"
+#include "Layers/HeightContrast.hlsl"
+#include "Layers/Terrace.hlsl"

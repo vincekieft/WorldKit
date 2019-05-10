@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
-using WorldKit.Procedural.Builders;
+using WorldKit.src.procedural.Builders;
+using WorldKit.src.procedural.Layers.Base;
 
-namespace WorldKit.Procedural.Layers
+namespace WorldKit.src.procedural.Layers
 {
-    public class Clamp : ALayer<ABuilder>
+    /// <summary>
+    /// Layer to clamp the height map heights between a given range. Does cut of the heights that fall out of the range
+    /// </summary>
+    public class Clamp : ALayer<HeightMapBuilder>
     {
         private readonly Vector2 _range;
-        private readonly float _strength;
         
-        public Clamp(float min, float max, float strength = 1f)
+        /// <summary>
+        /// Constructs a new clamp layer with a given min and max.
+        /// </summary>
+        /// <param name="min">Minimal height</param>
+        /// <param name="max">Maximal height</param>
+        public Clamp(float min, float max)
         {
             _range = new Vector2(min, max);
-            _strength = strength;
         }
 
         public override string Kernel()
@@ -21,7 +28,6 @@ namespace WorldKit.Procedural.Layers
 
         public override void SetAttributes(int kernel)
         {
-            Shader.SetFloat(Constants.BlendStrengthAttribute, _strength);
             Shader.SetVector(Constants.ClampRangeAttribute, _range);
         }
     }

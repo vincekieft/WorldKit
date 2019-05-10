@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using WorldKit.Procedural.Builders;
+using WorldKit.src.procedural.Builders;
 
-namespace WorldKit.Procedural.Layers
+namespace WorldKit.src.procedural.Layers.Base
 {
     public abstract class ALayer<T> where T : ABuilder
     {
