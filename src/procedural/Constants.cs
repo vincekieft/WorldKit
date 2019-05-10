@@ -42,6 +42,8 @@ namespace WorldKit.Procedural
         public const string ErosionDepositSpeedAttribute = "ErosionDepositSpeed";
         public const string PerlinAmplitudeAttribute = "PerlinAmplitude";
         public const string PerlinOffsetAttribute = "PerlinOffset";
+        public const string PerlinOctavesAttribute = "PerlinOctaves";
+        public const string PerlinOctavesStrengthAttribute = "PerlinOctavesStrength";
         public const string PseudoRandomNoiseSeedAttribute = "PseudoRandomNoiseSeed";
         public const string MeshExtendsAttribute = "MeshExtends";
         public const string VertexResolutionAttribute = "VertexResolution";

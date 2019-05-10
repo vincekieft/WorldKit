@@ -7,12 +7,24 @@ namespace WorldKit.Procedural.Layers
     {
         private readonly float _amplitude;
         private readonly Vector2 _offset;
+        private readonly float _octavesStrength;
+        private readonly int _octaves;
         private readonly float _strength;
-        
-        public PerlinNoise(float amplitude, Vector2 offset, float strength = 1f)
+
+        /// <summary>
+        /// Perlin noise layer
+        /// </summary>
+        /// <param name="amplitude"></param>
+        /// <param name="offset"></param>
+        /// <param name="octaves">The amount of octaves in the perlin noise layer. Minimal input is 1</param>
+        /// <param name="octavesStrength"></param>
+        /// <param name="strength"></param>
+        public PerlinNoise(float amplitude, Vector2 offset, int octaves = 1, float octavesStrength = 0.5f, float strength = 1f)
         {
             _amplitude = amplitude;
             _offset = offset;
+            _octavesStrength = octavesStrength;
+            _octaves = Mathf.Max(octaves, 1);
             _strength = strength;
         }
 
@@ -26,6 +38,8 @@ namespace WorldKit.Procedural.Layers
             Shader.SetFloat(Constants.BlendStrengthAttribute, _strength);
             Shader.SetFloat(Constants.PerlinAmplitudeAttribute, _amplitude);
             Shader.SetVector(Constants.PerlinOffsetAttribute, _offset);
+            Shader.SetInt(Constants.PerlinOctavesAttribute, _octaves);
+            Shader.SetFloat(Constants.PerlinOctavesStrengthAttribute, _octavesStrength);
         }
     }
 }
