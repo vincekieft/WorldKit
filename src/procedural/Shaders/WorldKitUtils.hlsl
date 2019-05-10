@@ -78,6 +78,10 @@ float3 RelativizeVector(float3 vec, float3 size){
     // calculate normal direction
     return Normalize3D(cross(l - c, u - c)) * multiplier;
  }
+ 
+ float NormalisedSigmoid(float x, float k){
+    return (x - x * k) / (k - abs(x) * 2 * k + 1);
+ }
 
 float3 CalculateGradientAndHeight (float2 pos, int resolution, RWStructuredBuffer<float> buffer) {
     // Calculate coords
