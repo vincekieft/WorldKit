@@ -1,17 +1,23 @@
 ﻿using UnityEngine;
-using WorldKit.Procedural.Builders;
+using WorldKit.src.procedural.Builders;
+using WorldKit.src.procedural.Layers.Base;
 
-namespace WorldKit.Procedural.Layers
+namespace WorldKit.src.procedural.Layers
 {
-    public class PseudoRandomNoise : ALayer<ABuilder>
+    /// <summary>
+    /// Layer to add pseudo random noise to height map
+    /// </summary>
+    public class PseudoRandomNoise : ALayer<HeightMapBuilder>
     {
         private readonly int _seed;
-        private readonly float _strength;
-        
-        public PseudoRandomNoise(int seed, float strength = 1f)
+
+        /// <summary>
+        /// Constructs a pseudo random noise layer
+        /// </summary>
+        /// <param name="seed">Seed for the noise</param>
+        public PseudoRandomNoise(int seed)
         {
             _seed = Mathf.Clamp(seed, 1, 10000);
-            _strength = strength;
         }
 
         public override string Kernel()
@@ -21,7 +27,6 @@ namespace WorldKit.Procedural.Layers
 
         public override void SetAttributes(int kernel)
         {
-            Shader.SetFloat(Constants.BlendStrengthAttribute, _strength);
             Shader.SetInt(Constants.PseudoRandomNoiseSeedAttribute, _seed);
         }
     }

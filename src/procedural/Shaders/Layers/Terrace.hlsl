@@ -4,7 +4,7 @@ float TerraceShape;
 bool Smooth;
 
 // Kernel
-[numthreads(8,1,1)]
+[numthreads(1024,1,1)]
 void Terrace (uint3 id : SV_DispatchThreadID)
 {
     if(id.x < HeightMapLength){ // Keep in bounds
@@ -23,6 +23,6 @@ void Terrace (uint3 id : SV_DispatchThreadID)
         float ceil = float(heightFloor + 1) / TerraceCount;
         
         // Update buffer
-        HeightBuffer[id.x] = lerp(HeightBuffer[id.x], lerp(floor, ceil, difference), BlendStrength);
+        HeightBuffer[id.x] = lerp(floor, ceil, difference);
     }
 }

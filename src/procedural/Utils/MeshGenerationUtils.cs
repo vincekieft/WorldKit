@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using WorldKit.Procedural.Structs;
+using WorldKit.src.procedural;
+using WorldKit.src.procedural.Structs;
+using WorldKit.src.procedural.Utils;
 
 namespace WorldKit.Procedural.Utils
 {

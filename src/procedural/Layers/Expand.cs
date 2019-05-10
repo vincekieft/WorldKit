@@ -1,17 +1,25 @@
 using UnityEngine;
-using WorldKit.Procedural.Builders;
+using WorldKit.src.procedural.Builders;
+using WorldKit.src.procedural.Layers.Base;
 
-namespace WorldKit.Procedural.Layers
+namespace WorldKit.src.procedural.Layers
 {
-    public class Expand : ALayer<ABuilder>
+    /// <summary>
+    /// Expands the heights to fit a new min max range.
+    /// A min max of 0.2 to 0.5 takes all the heights in the height map and squeezes them into the new 0.2 and 0.5 range, keeping their relative height in mind.
+    /// </summary>
+    public class Expand : ALayer<HeightMapBuilder>
     {
         private readonly Vector2 _minMax;
-        private readonly float _strength;
 
-        public Expand(Vector2 minMax, float strength = 1f)
+        /// <summary>
+        /// Constructs a new expand layer
+        /// </summary>
+        /// <param name="min">minimal range</param>
+        /// <param name="max">maximal range</param>
+        public Expand(float min, float max)
         {
-            _minMax = minMax;
-            _strength = strength;
+            _minMax = new Vector2(min, max);
         }
         
         public override string Kernel()
@@ -22,7 +30,6 @@ namespace WorldKit.Procedural.Layers
         public override void SetAttributes(int kernel)
         {
             Shader.SetVector(Constants.ExpandMinMaxAttribute, _minMax);
-            Shader.SetFloat(Constants.BlendStrengthAttribute, _strength);
         }
     }
 }
