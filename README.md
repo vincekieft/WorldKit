@@ -1,1 +1,146 @@
-# WorldKit
+# WorldKit api
+A procedural terrain generation api created for unity runtime and editor that uses the full power of compute shaders.
+
+### Api structure
+
+###### Builders
+The api is build upon the idea of the builder pattern.
+There are different builders for different purposes but all extend from the same abstract base class `WorldKit.src.procedural.Builders.ABuilder` ( namespace included ).
+Implemented builders:
+
+- `WorldKit.src.procedural.Builders.HeightMapBuilder` used to build procedural heightmaps
+- `WorldKit.src.procedural.Builders.TextureBuilder` used to build procedural textures
+
+Every builder instance is used to create a single item of what your trying to generate (e.g. a single heightmap or a single texture).
+The reason every builder represents a single item is because of performance optimization.
+Every builder allocates certain buffers on the GPU and keeps them there until you releases them manually by calling the `Release()` method on the builder.
+This is done to add the possibility of adding multiple layers to a builder without having to send all the data back and forth between the GPU and CPU.
+
+###### Layers
+The actual building is done by adding the right layers to the builder instance.
+A layer represents a certain modification you want to perform on the builders current state.
+Implemented layers:
+
+- `WorldKit.src.procedural.Layers.Clamp` (Heightmap layer)
+- `WorldKit.src.procedural.Layers.Expand` (Heightmap layer)
+- `WorldKit.src.procedural.Layers.HeightContrast` (Heightmap layer)
+- `WorldKit.src.procedural.Layers.HydraulicErosion` (Heightmap layer)
+- `WorldKit.src.procedural.Layers.PerlinNoise` (Heightmap layer)
+- `WorldKit.src.procedural.Layers.PseudoRandomNoise` (Heightmap layer)
+- `WorldKit.src.procedural.Layers.Terrace` (Heightmap layer)
+- `WorldKit.src.procedural.Layers.HeightMapToTexture` (Texture layer)
+
+These layers can be added to a builder by calling the `AddLayer()` method on a builder.
+This method directly adds a new layer to the builder and performs the layers modifications, meaning you dont have to manually execute the layers.
+Because the layers only send minimal data to the GPU, executing layers on a builder is very efficient.
+
+###### Utilities
+WorldKit api also comes with a couple handy utility class:
+
+- `WorldKit.src.procedural.Utils.BufferUtils`
+- `WorldKit.src.procedural.Utils.MathUtils`
+- `WorldKit.src.procedural.Utils.MeshGenerationUtils`
+- `WorldKit.src.procedural.Utils.TerrainUtils`
+
+### Implementation
+Using the WorldKit api is very simple. You create a builder, add the layers you want to use and retrieve the output.
+
+###### Example
+Here is an example of generating a heightmap and applying it to a unity terrain.
+We start by creating the builder itself:
+```c#
+public ComputeShader shader; // WorldKit compute shader
+public Terrain terrain; // Just a unity terrain
+
+public void BuildTerrain()
+{
+    // Get resolution of target terrain
+    int resolution = terrain.terrainData.heightmapResolution;
+    
+    // Construct height map builder
+    HeightMapBuilder height = new HeightMapBuilder(shader, resolution);
+    
+    // WorldKit utility method to apply a heightmap to our unity terrain
+    terrain.ApplyHeightMap(height.HeightMap());
+    
+    // Dont forget to release the builder when your done
+    height.Release();
+}
+```
+
+Now that the builder is constructed we can start adding layers to shape our height map.
+We start by adding a perlin noise layer:
+
+```c#
+// Add perlin noise layer
+height.AddLayer(new PerlinNoise(2f, Vector2.zero, 8, 0.8f));
+```
+
+The result will look like this:
+
+![alt text](https://i.ibb.co/RP3PKYL/Perlin-Noise.png)
+
+Now we add two terrace layers to give the terrain a more interesting shape:
+
+```c#
+// Add terrace layers
+height.AddLayer(new Terrace(4, 0.4f));
+height.AddLayer(new Terrace(24, 0.5f));
+```
+
+The result will look like this:
+
+![alt text](https://i.ibb.co/VQN4gR8/Terrace.png)
+
+Then to finish it off we add a hydraulic erosion layer to give the terrain a more natural look:
+
+```c#
+// Add hydraulic erosion layer
+height.AddLayer(new HydraulicErosion(resolution * 150, 120, 0.03f, 6f, 0f, 0.3f, 0.02f, 0.3f));
+```
+
+Our final terrain will now look like this:
+
+![alt text](https://i.ibb.co/dDfyvQ3/Erosion.png)
+
+Resulting code:
+```c#
+public ComputeShader shader; // WorldKit compute shader
+public Terrain terrain; // Just a unity terrain
+
+public void BuildTerrain()
+{
+    // Get resolution of target terrain
+    int resolution = terrain.terrainData.heightmapResolution;
+    
+    // Construct height map builder
+    HeightMapBuilder height = new HeightMapBuilder(shader, resolution);
+    
+    // Add perlin noise layer
+    height.AddLayer(new PerlinNoise(2f, Vector2.zero, 8, 0.8f));
+    
+    // Add terrace layers
+    height.AddLayer(new Terrace(4, 0.4f));
+    height.AddLayer(new Terrace(24, 0.5f));
+    
+    // Add hydraulic erosion layer
+    height.AddLayer(new HydraulicErosion(resolution * 150, 120, 0.03f, 6f, 0f, 0.3f, 0.02f, 0.3f));
+    
+    // WorldKit utility method to apply a heightmap to our unity terrain
+    terrain.ApplyHeightMap(height.HeightMap());
+    
+    // Dont forget to release the builder when your done
+    height.Release();
+}
+```
+
+### Guide lines
+Here are a guide lines to keep in mind while using the system:
+
+- Try to minimize the amount of builders you create. Everytime a builder is constructed, data has to be send to the GPU.
+
+### Requirements
+The requirements for the WorldKit api are:
+
+- Unity 5.6 or higher ( because of the use of compute shaders )
+- Support for compute shaders
