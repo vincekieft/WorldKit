@@ -1,7 +1,6 @@
 using UnityEngine;
-using WorldKit.Procedural.Utils;
 
-namespace WorldKit.src.procedural.Utils
+namespace WorldKit.api.procedural.Utils
 {
     public static class TerrainUtils
     {

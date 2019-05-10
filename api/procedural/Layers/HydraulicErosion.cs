@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using WorldKit.src.procedural.Builders;
-using WorldKit.src.procedural.Layers.Base;
+using WorldKit.api.procedural.Builders;
+using WorldKit.api.procedural.Layers.Base;
 
-namespace WorldKit.src.procedural.Layers
+namespace WorldKit.api.procedural.Layers
 {
     /// <summary>
     /// Layer to add hydraulic erosion to the terrain

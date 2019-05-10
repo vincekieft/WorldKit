@@ -1,4 +1,4 @@
-namespace WorldKit.src.procedural
+namespace WorldKit.api.procedural
 {
     public static class Constants
     {

@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
-using WorldKit.Procedural;
-using WorldKit.Procedural.Utils;
-using WorldKit.src.procedural.Utils;
+using WorldKit.api.procedural.Utils;
 
-namespace WorldKit.src.procedural.Builders
+namespace WorldKit.api.procedural.Builders
 {
     public class TextureBuilder : ABuilder
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace WorldKit.src.procedural.Utils
+namespace WorldKit.api.procedural.Utils
 {
     public static class MathUtils
     {

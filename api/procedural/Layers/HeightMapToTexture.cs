@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using WorldKit.Procedural.Utils;
-using WorldKit.src.procedural.Builders;
-using WorldKit.src.procedural.Layers.Base;
-using WorldKit.src.procedural.Utils;
+using WorldKit.api.procedural.Builders;
+using WorldKit.api.procedural.Layers.Base;
+using WorldKit.api.procedural.Utils;
 
-namespace WorldKit.src.procedural.Layers
+namespace WorldKit.api.procedural.Layers
 {
     /// <summary>
     /// Turns a height map into a texture

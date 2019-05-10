@@ -5,11 +5,11 @@ A procedural terrain generation api created for unity runtime and editor that us
 
 ###### Builders
 The api is build upon the idea of the builder pattern.
-There are different builders for different purposes but all extend from the same abstract base class `WorldKit.src.procedural.Builders.ABuilder` ( namespace included ).
+There are different builders for different purposes but all extend from the same abstract base class `WorldKit.api.procedural.Builders.ABuilder` ( namespace included ).
 Implemented builders:
 
-- `WorldKit.src.procedural.Builders.HeightMapBuilder` used to build procedural heightmaps
-- `WorldKit.src.procedural.Builders.TextureBuilder` used to build procedural textures
+- `WorldKit.api.procedural.Builders.HeightMapBuilder` used to build procedural heightmaps
+- `WorldKit.api.procedural.Builders.TextureBuilder` used to build procedural textures
 
 Every builder instance is used to create a single item of what your trying to generate (e.g. a single heightmap or a single texture).
 The reason every builder represents a single item is because of performance optimization.
@@ -21,14 +21,14 @@ The actual building is done by adding the right layers to the builder instance.
 A layer represents a certain modification you want to perform on the builders current state.
 Implemented layers:
 
-- `WorldKit.src.procedural.Layers.Clamp` (Heightmap layer)
-- `WorldKit.src.procedural.Layers.Expand` (Heightmap layer)
-- `WorldKit.src.procedural.Layers.HeightContrast` (Heightmap layer)
-- `WorldKit.src.procedural.Layers.HydraulicErosion` (Heightmap layer)
-- `WorldKit.src.procedural.Layers.PerlinNoise` (Heightmap layer)
-- `WorldKit.src.procedural.Layers.PseudoRandomNoise` (Heightmap layer)
-- `WorldKit.src.procedural.Layers.Terrace` (Heightmap layer)
-- `WorldKit.src.procedural.Layers.HeightMapToTexture` (Texture layer)
+- `WorldKit.api.procedural.Layers.Clamp` (Heightmap layer)
+- `WorldKit.api.procedural.Layers.Expand` (Heightmap layer)
+- `WorldKit.api.procedural.Layers.HeightContrast` (Heightmap layer)
+- `WorldKit.api.procedural.Layers.HydraulicErosion` (Heightmap layer)
+- `WorldKit.api.procedural.Layers.PerlinNoise` (Heightmap layer)
+- `WorldKit.api.procedural.Layers.PseudoRandomNoise` (Heightmap layer)
+- `WorldKit.api.procedural.Layers.Terrace` (Heightmap layer)
+- `WorldKit.api.procedural.Layers.HeightMapToTexture` (Texture layer)
 
 These layers can be added to a builder by calling the `AddLayer()` method on a builder.
 This method directly adds a new layer to the builder and performs the layers modifications, meaning you dont have to manually execute the layers.
@@ -37,10 +37,10 @@ Because the layers only send minimal data to the GPU, executing layers on a buil
 ###### Utilities
 WorldKit api also comes with a couple handy utility class:
 
-- `WorldKit.src.procedural.Utils.BufferUtils`
-- `WorldKit.src.procedural.Utils.MathUtils`
-- `WorldKit.src.procedural.Utils.MeshGenerationUtils`
-- `WorldKit.src.procedural.Utils.TerrainUtils`
+- `WorldKit.api.procedural.Utils.BufferUtils`
+- `WorldKit.api.procedural.Utils.MathUtils`
+- `WorldKit.api.procedural.Utils.MeshGenerationUtils`
+- `WorldKit.api.procedural.Utils.TerrainUtils`
 
 ### Implementation
 Using the WorldKit api is very simple. You create a builder, add the layers you want to use and retrieve the output.
@@ -50,9 +50,9 @@ Here is an example of generating a heightmap and applying it to a unity terrain.
 We start by creating the builder itself:
 ```c#
 using UnityEngine;
-using WorldKit.src.procedural.Builders;
-using WorldKit.src.procedural.Layers;
-using WorldKit.src.procedural.Utils;
+using WorldKit.api.procedural.Builders;
+using WorldKit.api.procedural.Layers;
+using WorldKit.api.procedural.Utils;
 
 public ComputeShader shader; // WorldKit compute shader
 public Terrain terrain; // Just a unity terrain
@@ -111,9 +111,9 @@ Our final terrain will now look like this:
 Resulting code:
 ```c#
 using UnityEngine;
-using WorldKit.src.procedural.Builders;
-using WorldKit.src.procedural.Layers;
-using WorldKit.src.procedural.Utils;
+using WorldKit.api.procedural.Builders;
+using WorldKit.api.procedural.Layers;
+using WorldKit.api.procedural.Utils;
 
 public ComputeShader shader; // WorldKit compute shader
 public Terrain terrain; // Just a unity terrain
