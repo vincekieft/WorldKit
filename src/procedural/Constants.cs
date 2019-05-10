@@ -3,7 +3,7 @@ namespace WorldKit.src.procedural
     public static class Constants
     {
         // Global
-        public const int GpuGridSize = 8;
+        public const int GpuGridSize = 32;
         public const int MaxMeshVertexCount = 65000;
         
         

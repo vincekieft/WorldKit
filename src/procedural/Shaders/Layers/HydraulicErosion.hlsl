@@ -12,7 +12,7 @@ float ErosionGravity;
 float ErosionDepositSpeed;
 
 // Kernel
-[numthreads(8,1,1)]
+[numthreads(32,1,1)]
 void HydraulicErosion (uint3 id : SV_DispatchThreadID)
 {
     if(id.x < ErosionParticleCount){ // Keep in bounds

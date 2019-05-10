@@ -19,7 +19,7 @@ float PerlinNoise(uint id, float amplitude, float2 offset){
 }
 
 // Kernel
-[numthreads(8,1,1)]
+[numthreads(32,1,1)]
 void PerlinNoise (uint3 id : SV_DispatchThreadID)
 {
     if(id.x < HeightMapLength){ // Keep in bounds

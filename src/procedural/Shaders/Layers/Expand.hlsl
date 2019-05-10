@@ -2,7 +2,7 @@
 float2 ExpanderMinMax;
 
 // Kernel
-[numthreads(8,1,1)]
+[numthreads(32,1,1)]
 void Expand (uint3 id : SV_DispatchThreadID)
 {
     if(id.x < HeightMapLength){ // Keep in bounds

@@ -2,7 +2,7 @@
 float2 ClampRange;
 
 // Kernel
-[numthreads(8,8,1)]
+[numthreads(32,1,1)]
 void Clamp (uint3 id : SV_DispatchThreadID)
 {
     if(id.x < HeightMapLength){ // Keep in bounds

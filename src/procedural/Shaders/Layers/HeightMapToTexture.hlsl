@@ -1,5 +1,5 @@
 // Kernel
-[numthreads(8,8,1)]
+[numthreads(32,32,1)]
 void HeightMapToTexture (uint3 id : SV_DispatchThreadID)
 {
     // Get width and height of texture

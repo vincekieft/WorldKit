@@ -2,7 +2,7 @@
 float HeightContrastPow;
 
 // Kernel
-[numthreads(8,1,1)]
+[numthreads(32,1,1)]
 void HeightContrast (uint3 id : SV_DispatchThreadID)
 {
     // Expand height

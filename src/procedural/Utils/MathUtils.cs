@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace WorldKit.Procedural.Utils
+namespace WorldKit.src.procedural.Utils
 {
     public static class MathUtils
     {
@@ -15,7 +15,7 @@ namespace WorldKit.Procedural.Utils
             float division = (float)index / resolution;
             int rounded = (int)division;
             return new Vector2(
-                Mathf.RoundToInt((division - rounded) * resolution),
+                (int)((division - rounded) * resolution),
                 rounded
             );
         }
