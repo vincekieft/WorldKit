@@ -95,7 +95,7 @@ height.AddLayer(new Terrace(24, 0.5f));
 
 The result will look like this:
 
-![alt text](https://i.ibb.co/VQN4gR8/Terrace.png)
+![alt text](https://i.ibb.co/f985wV4/Webp-net-compress-image.jpg)
 
 Then to finish it off we add a hydraulic erosion layer to give the terrain a more natural look:
 
