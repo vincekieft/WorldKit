@@ -1,0 +1,34 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel PerlinNoise
+#pragma kernel Clamp
+#pragma kernel Erosion
+#pragma kernel PseudoRandomNoise
+#pragma kernel HeightMapToTexture
+#pragma kernel HeightMapToVertices
+#pragma kernel Expand
+#pragma kernel HeightContrast
+
+// Declare global buffers
+float BlendStrength;
+
+// Texture buffer
+RWTexture2D<float4> Texture;
+
+// Height buffer
+uint HeightMapResolution;
+uint HeightMapLength;
+RWStructuredBuffer<float> HeightBuffer;
+
+// Global includes
+#include "PRNG.hlsl"
+#include "WorldKitUtils.hlsl"
+
+// Kernel includes
+#include "PerlinNoise.hlsl"
+#include "Clamp.hlsl"
+#include "Erosion.hlsl"
+#include "PseudoRandomNoise.hlsl"
+#include "HeightMapToTexture.hlsl"
+#include "HeightMapToVertices.hlsl"
+#include "Expand.hlsl"
+#include "HeightContrast.hlsl"
