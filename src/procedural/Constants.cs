@@ -16,6 +16,7 @@ namespace WorldKit.Procedural
         public const string HeightMapToVerticesKernel = "HeightMapToVertices";
         public const string ExpandKernel = "Expand";
         public const string HeightContrastKernel = "HeightContrast";
+        public const string TerraceKernel = "Terrace";
         
         // Buffers
         public const string HeightBuffer = "HeightBuffer";
@@ -47,5 +48,8 @@ namespace WorldKit.Procedural
         public const string ErosionBrushRadiusAttribute = "ErosionBrushRadius";
         public const string ExpandMinMaxAttribute = "ExpanderMinMax";
         public const string HeightContrastAttribute = "HeightContrastPow";
+        public const string TerraceCountAttribute = "TerraceCount";
+        public const string TerraceSmoothAttribute = "Smooth";
+        public const string TerraceShapeAttribute = "TerraceShape";
     }
 }

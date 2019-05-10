@@ -7,6 +7,7 @@
 #pragma kernel HeightMapToVertices
 #pragma kernel Expand
 #pragma kernel HeightContrast
+#pragma kernel Terrace
 
 // Declare global buffers
 float BlendStrength;
@@ -32,3 +33,4 @@ RWStructuredBuffer<float> HeightBuffer;
 #include "HeightMapToVertices.hlsl"
 #include "Expand.hlsl"
 #include "HeightContrast.hlsl"
+#include "Terrace.hlsl"
