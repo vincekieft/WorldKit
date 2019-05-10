@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace WorldKit.src.procedural.Structs
+namespace WorldKit.api.procedural.Structs
 {
     public struct VertexStruct
     {

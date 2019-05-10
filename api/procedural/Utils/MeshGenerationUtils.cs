@@ -1,10 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using WorldKit.src.procedural;
-using WorldKit.src.procedural.Structs;
-using WorldKit.src.procedural.Utils;
+using WorldKit.api.procedural.Structs;
 
-namespace WorldKit.Procedural.Utils
+namespace WorldKit.api.procedural.Utils
 {
     public static class MeshGenerationUtils
     {

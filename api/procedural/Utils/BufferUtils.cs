@@ -1,7 +1,7 @@
 using UnityEngine;
-using WorldKit.src.procedural.Structs;
+using WorldKit.api.procedural.Structs;
 
-namespace WorldKit.src.procedural.Utils
+namespace WorldKit.api.procedural.Utils
 {
     public static class BufferUtils
     {

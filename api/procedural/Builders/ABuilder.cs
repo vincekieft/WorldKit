@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using WorldKit.src.procedural.Layers.Base;
+using WorldKit.api.procedural.Layers.Base;
 
-namespace WorldKit.src.procedural.Builders
+namespace WorldKit.api.procedural.Builders
 {
     public abstract class ABuilder
     {
