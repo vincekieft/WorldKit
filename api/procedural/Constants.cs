@@ -6,10 +6,8 @@ namespace WorldKit.api.procedural
         public const int GpuGridSize = 32;
         public const int MaxMeshVertexCount = 65000;
         
-        
         // Erosion constants
         public const float Gravity = 9.81f;
-
 
         // Kernels
         public const string ClampKernel = "Clamp";
