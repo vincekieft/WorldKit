@@ -1,3 +1,5 @@
+// Licensed under the Non-Profit Open Software License version 3.0
+
 using System.Collections.Generic;
 using UnityEngine;
 using WorldKit.api.procedural.Layers.Base;
