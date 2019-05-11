@@ -1,3 +1,5 @@
+// Licensed under the Non-Profit Open Software License version 3.0
+
 float Magnitude2D(float2 dir){
     return max(0.01,sqrt(dir.x * dir.x + dir.y * dir.y));
 }

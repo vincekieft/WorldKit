@@ -1,3 +1,5 @@
+// Licensed under the Non-Profit Open Software License version 3.0
+
 // Kernel
 [numthreads(32,32,1)]
 void HeightMapToTexture (uint3 id : SV_DispatchThreadID)

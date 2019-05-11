@@ -1,3 +1,5 @@
+// Licensed under the Non-Profit Open Software License version 3.0
+
 using UnityEngine;
 using WorldKit.api.procedural.Builders;
 using WorldKit.api.procedural.Layers.Base;

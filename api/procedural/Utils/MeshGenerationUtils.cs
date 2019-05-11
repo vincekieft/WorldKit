@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Licensed under the Non-Profit Open Software License version 3.0
+
+using System;
 using UnityEngine;
 using WorldKit.api.procedural.Structs;
 

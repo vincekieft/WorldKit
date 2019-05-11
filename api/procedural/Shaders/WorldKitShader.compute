@@ -1,4 +1,6 @@
-﻿// Each #kernel tells which function to compile; you can have many kernels
+﻿// Licensed under the Non-Profit Open Software License version 3.0
+
+// Each #kernel tells which function to compile; you can have many kernels
 #pragma kernel PerlinNoise
 #pragma kernel Clamp
 #pragma kernel HydraulicErosion

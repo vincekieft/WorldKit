@@ -1,3 +1,5 @@
+// Licensed under the Non-Profit Open Software License version 3.0
+
 float4 mod(float4 x, float4 y)
 {
   return x - y * floor(x / y);

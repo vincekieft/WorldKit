@@ -1,3 +1,5 @@
+// Licensed under the Non-Profit Open Software License version 3.0
+
 namespace WorldKit.api.procedural
 {
     public static class Constants
