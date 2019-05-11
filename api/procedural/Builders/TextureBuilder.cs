@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+// Licensed under the Non-Profit Open Software License version 3.0
+
+using UnityEngine;
 using WorldKit.api.procedural.Utils;
 
 namespace WorldKit.api.procedural.Builders
