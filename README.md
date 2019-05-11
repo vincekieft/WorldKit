@@ -148,6 +148,14 @@ public void BuildTerrain()
 Here are a guide lines to keep in mind while using the system:
 
 - Try to minimize the amount of builders you create. Everytime a builder is constructed, data has to be send to the GPU.
+- The utility function `ApplyHeightMap` is pretty slow, try to avoid unnecessary use.
+
+### Performance
+WorldKit performs very fast because of the GPU use. Generation times are normally around (These tests were run with a single heightmap builder and 4 layers: perlin noise, 2x terrace, erosion):
+
+- 4 ms for 1k heightmaps (1024 by 1024)
+- 10 ms for 2k heightmaps (2048 by 2048)
+- 40 ms for 4k heightmaps (4096 by 4096)
 
 ### Requirements
 The requirements for the WorldKit api are:
