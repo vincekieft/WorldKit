@@ -165,3 +165,4 @@ The requirements for the WorldKit api are:
 
 ### License
 Licensed under the Non-Profit Open Software License version 3.0
+https://opensource.org/licenses/NPOSL-3.0
