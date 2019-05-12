@@ -11,7 +11,8 @@ namespace WorldKit.api.procedural.Layers
     /// </summary>
     public class PerlinNoise : ALayer<HeightMapBuilder>
     {
-        private readonly float _amplitude;
+        private readonly PerlinType _type;
+        private readonly float _frequency;
         private readonly Vector2 _offset;
         private readonly float _octavesStrength;
         private readonly int _octaves;
@@ -19,14 +20,15 @@ namespace WorldKit.api.procedural.Layers
         /// <summary>
         /// Perlin noise layer
         /// </summary>
-        /// <param name="amplitude"></param>
-        /// <param name="offset"></param>
+        /// <param name="type">The type of perlin noise</param>
+        /// <param name="frequency">How frequent the noise should be. Higher means smaller shapes and more noise</param>
+        /// <param name="offset">Offset the noise position</param>
         /// <param name="octaves">The amount of octaves in the perlin noise layer. Minimal input is 1</param>
-        /// <param name="octavesStrength"></param>
-        /// <param name="strength"></param>
-        public PerlinNoise(float amplitude, Vector2 offset, int octaves = 1, float octavesStrength = 0.5f)
+        /// <param name="octavesStrength">How much of the octaves should shine through</param>
+        public PerlinNoise(PerlinType type, float frequency, int octaves = 1, float octavesStrength = 0.5f, Vector2 offset = default)
         {
-            _amplitude = amplitude;
+            _type = type;
+            _frequency = frequency;
             _offset = offset;
             _octavesStrength = octavesStrength;
             _octaves = Mathf.Max(octaves, 1);
@@ -39,10 +41,18 @@ namespace WorldKit.api.procedural.Layers
 
         public override void SetAttributes(int kernel)
         {
-            Shader.SetFloat(Constants.PerlinAmplitudeAttribute, _amplitude);
+            Shader.SetInt(Constants.PerlinTypeAttribute, (int)_type);
+            Shader.SetFloat(Constants.PerlinFrequencyAttribute, _frequency);
             Shader.SetVector(Constants.PerlinOffsetAttribute, _offset);
             Shader.SetInt(Constants.PerlinOctavesAttribute, _octaves);
             Shader.SetFloat(Constants.PerlinOctavesStrengthAttribute, _octavesStrength);
+        }
+        
+        public enum PerlinType
+        {
+            Standard = 0,
+            Billowy = 1,
+            Rigid = 2
         }
     }
 }

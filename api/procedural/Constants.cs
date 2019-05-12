@@ -47,7 +47,8 @@ namespace WorldKit.api.procedural
         public const string ErosionParticleCount = "ErosionParticleCount";
         
         // Perlin noise attributes
-        public const string PerlinAmplitudeAttribute = "PerlinAmplitude";
+        public const string PerlinTypeAttribute = "PerlinType";
+        public const string PerlinFrequencyAttribute = "PerlinFrequency";
         public const string PerlinOffsetAttribute = "PerlinOffset";
         public const string PerlinOctavesAttribute = "PerlinOctaves";
         public const string PerlinOctavesStrengthAttribute = "PerlinOctavesStrength";

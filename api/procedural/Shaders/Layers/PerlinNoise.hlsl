@@ -1,8 +1,9 @@
 // Licensed under the Non-Profit Open Software License version 3.0
 
 // Variables
+uint PerlinType;
 float PerlinAmplitude;
-float PerlinePersistence;
+float PerlinFrequency;
 float2 PerlinOffset;
 uint PerlinOctaves;
 float PerlinOctavesStrength;
@@ -35,12 +36,21 @@ void PerlinNoise (uint3 id : SV_DispatchThreadID)
 {
     if(id.x < HeightMapLength){ // Keep in bounds
         float total = 0;
-        float frequency = PerlinAmplitude;
+        float frequency = PerlinFrequency;
         float amplitude = 1;
         float maxvalue = 0;
         
         for(uint i = 0; i < PerlinOctaves; i++){
-            total += BillowyPerlinNoise(id.x, frequency, float2(0,0)) * amplitude;
+        
+            // Types
+            if(PerlinType == 0){ // Standard
+                total += StandardPerlinNoise(id.x, frequency, PerlinOffset) * amplitude;
+            } else if(PerlinType == 1){ // Billowy
+                total += BillowyPerlinNoise(id.x, frequency, PerlinOffset) * amplitude;
+            } else if(PerlinType == 2){ // Rigid
+                total += RigidPerlinNoise(id.x, frequency, PerlinOffset) * amplitude;
+            }
+            
             maxvalue += amplitude;
             amplitude *= PerlinOctavesStrength;
             frequency *= 2;
