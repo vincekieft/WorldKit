@@ -23,8 +23,8 @@ RWStructuredBuffer<float> HeightBuffer;
 
 // Global includes
 #include "Utils/PRNG.hlsl"
-#include "Utils/WorldKitUtils.hlsl"
 #include "Utils/ClassicNoise2D.hlsl"
+#include "Utils/WorldKitUtils.hlsl"
 
 // Kernel includes
 #include "Layers/PerlinNoise.hlsl"
