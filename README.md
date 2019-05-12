@@ -83,7 +83,7 @@ height.AddLayer(new PerlinNoise(PerlinNoise.PerlinType.Standard, 2f, 8, 0.8f));
 
 The result will look like this:
 
-![alt text](https://i.ibb.co/rbdKbHZ/Perlin-Noise.jpg)
+![alt text](https://i.ibb.co/M7z0JB1/Perlin-Noise.jpg)
 
 Now we add two terrace layers to give the terrain a more interesting shape:
 
@@ -95,7 +95,7 @@ height.AddLayer(new Terrace(24, 0.5f));
 
 The result will look like this:
 
-![alt text](https://i.ibb.co/f985wV4/Webp-net-compress-image.jpg)
+![alt text](https://i.ibb.co/K0jnCQ8/Terrace.jpg)
 
 Then to finish it off we add a hydraulic erosion layer to give the terrain a more natural look:
 
@@ -106,7 +106,7 @@ height.AddLayer(new HydraulicErosion(resolution * 150, 120, 0.03f, 6f, 0f, 0.3f,
 
 Our final terrain will now look like this:
 
-![alt text](https://i.ibb.co/FwK3ddZ/Erosion.jpg)
+![alt text](https://i.ibb.co/y4zgqJG/Erosion.jpg)
 
 Resulting code:
 ```c#
