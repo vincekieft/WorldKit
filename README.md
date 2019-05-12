@@ -78,7 +78,7 @@ We start by adding a perlin noise layer:
 
 ```c#
 // Add perlin noise layer
-height.AddLayer(new PerlinNoise(2f, Vector2.zero, 8, 0.8f));
+height.AddLayer(new PerlinNoise(PerlinNoise.PerlinType.Standard, 2f, 8, 0.8f));
 ```
 
 The result will look like this:
@@ -127,7 +127,7 @@ public void BuildTerrain()
     HeightMapBuilder height = new HeightMapBuilder(shader, resolution);
     
     // Add perlin noise layer
-    height.AddLayer(new PerlinNoise(2f, Vector2.zero, 8, 0.8f));
+    height.AddLayer(new PerlinNoise(PerlinNoise.PerlinType.Standard, 2f, 8, 0.8f));
     
     // Add terrace layers
     height.AddLayer(new Terrace(4, 0.4f));
