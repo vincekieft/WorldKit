@@ -1,10 +1,10 @@
 # WorldKit api
-A procedural terrain generation api created for unity runtime and editor that uses the full power of compute shaders.
+A procedural terrain generation api created for Unity runtime and editor that uses the full power of compute shaders.
 
-### Api structure
+### API structure
 
 ###### Builders
-The api is build upon the idea of the builder pattern.
+The API is build upon the idea of the builder pattern.
 There are different builders for different purposes but all extend from the same abstract base class `WorldKit.api.procedural.Builders.ABuilder` ( namespace included ).
 Implemented builders:
 
@@ -35,7 +35,7 @@ This method directly adds a new layer to the builder and performs the layers mod
 Because the layers only send minimal data to the GPU, executing layers on a builder is very efficient.
 
 ###### Utilities
-WorldKit api also comes with a couple handy utility class:
+WorldKit API also comes with a couple handy utility class:
 
 - `WorldKit.api.procedural.Utils.BufferUtils`
 - `WorldKit.api.procedural.Utils.MathUtils`
@@ -43,7 +43,7 @@ WorldKit api also comes with a couple handy utility class:
 - `WorldKit.api.procedural.Utils.TerrainUtils`
 
 ### Implementation
-Using the WorldKit api is very simple. You create a builder, add the layers you want to use and retrieve the output.
+Using the WorldKit API is very simple. You create a builder, add the layers you want to use and retrieve the output.
 
 ###### Example
 Here is an example of generating a heightmap and applying it to a unity terrain.
