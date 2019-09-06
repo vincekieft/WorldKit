@@ -162,7 +162,3 @@ The requirements for the WorldKit api are:
 
 - Unity 5.6 or higher ( because of the use of compute shaders )
 - Support for compute shaders
-
-### License
-Licensed under the Non-Profit Open Software License version 3.0:
-https://opensource.org/licenses/NPOSL-3.0
